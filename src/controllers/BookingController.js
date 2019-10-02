@@ -13,7 +13,10 @@ module.exports = {
             date,
         });
 
-        return res.json(booking);
+
+        await booking.populate('spot').populate('user').execPopulate();
         
+        return res.json(booking);
+
     }
 }
